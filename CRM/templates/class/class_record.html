@@ -1,0 +1,58 @@
+{% extends 'customer_base.html' %}
+
+{% block page-content %}
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <h2>课程记录表</h2>
+        </div>
+        <div class="panel-body">
+            <a href="{% url 'crm:add_class_record' %}?class_id={{ class_id }}&" class="btn btn-success">新增课程记录</a>
+        </div>
+
+        <form action="">
+            {% csrf_token %}
+            <!-- Table -->
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>节次</th>
+                        <th>课程内容</th>
+                        <th>作业布置</th>
+                        <th>老师</th>
+                        <th>班级</th>
+                        <th>操作</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for record in data %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="check" value="{{ record.id }}" name="check">
+                            </td>
+                            <td>{{ record.day_num }}</td>
+                            <td><a href="">{{ record.course_title }}</a></td>
+                            <td>{{ record.has_homework }}</td>
+                            <td>{{ record.teacher }}</td>
+                            <td>{{ record.re_class }}</td>
+                            <td>
+                                <a href="{% url 'crm:edit_class_record' record.id %}" class="btn btn-warning btn-sm"><i
+                                        class="fa fa-edit"> 编辑 </i></a>
+                                <a href="" class="btn btn-danger btn-sm"><i class="fa fa-close"> 删除 </i></a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </form>
+
+    </div>
+    {#分页器#}
+    {{ pag | safe }}
+{% endblock %}

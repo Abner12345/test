@@ -1,0 +1,67 @@
+{% extends 'customer_base.html' %}
+
+
+{% block page-content %}
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <h2>客户沟通记录</h2>
+        </div>
+        <div class="panel-body">
+            <div>
+                <a href="{% url 'crm:add_record' %}" class="btn btn-success" style="display: inline-block">创建客户沟通记录</a>
+            </div>
+        </div>
+
+        <form action="">
+            {% csrf_token %}
+            <!-- Table -->
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>序号</th>
+                        <th>客户姓名</th>
+                        <th>沟通内容</th>
+                        <th>状态</th>
+                        <th>销售</th>
+                        <th>时间</th>
+                        <th>操作</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for record in record_list %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="check" value="{{ record.id }}" name="check">
+                            </td>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ record.customer }}</td>
+                            <td>{{ record.note }}</td>
+                            <td>{{ record.get_status_display }}</td>
+                            <td>{{ record.consultant }}</td>
+                            <td>{{ record.date | date:"Y-m-d H:i:s" }}</td>
+                            <td>
+                                <a href="/crm/edit_record/{{ record.id }}/" class="btn btn-warning btn-sm"><i
+                                        class="fa fa-edit"> 编辑 </i></a>
+                                <a href="" class="btn btn-danger btn-sm"><i class="fa fa-close"> 删除 </i></a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </form>
+
+    </div>
+    </div>
+    {#分页器#}
+    {{ pag | safe }}
+{% endblock %}
+
+
+

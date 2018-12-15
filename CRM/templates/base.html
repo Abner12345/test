@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'BaseFile/bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'BaseFile/sweetalert/sweetalert.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    {% block page-css %}
+    {% endblock %}
+</head>
+<body>
+
+{% block page-main %}
+{% endblock %}
+
+<script src="{% static 'BaseFile/jquery.js' %}"></script>
+<script src="{% static 'BaseFile/bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'BaseFile/sweetalert/sweetalert.min.js' %}"></script>
+{% block page-js %}
+{% endblock %}
+</body>
+</html>

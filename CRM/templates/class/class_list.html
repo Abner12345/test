@@ -1,0 +1,63 @@
+{% extends 'customer_base.html' %}
+
+{% block page-content %}
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <h2>班级列表</h2>
+        </div>
+        <div class="panel-body">
+            <a href="{% url 'crm:add_class'%}" class="btn btn-success">新增班级</a>
+        </div>
+
+        <form action="">
+            {% csrf_token %}
+            <!-- Table -->
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>序号</th>
+                        <th>课程名称</th>
+                        <th>学期</th>
+                        <th>校区</th>
+                        <th>学费</th>
+                        <th>开班日期</th>
+                        <th>老师</th>
+                        <th>操作</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for class in data %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="check" value="{{ class.id }}" name="check">
+                            </td>
+                            <td>{{ forloop.counter }}</td>
+                            <td><a href="{% url 'crm:class_record'%}?class={{ class.id }}&">{{ class.course }}</a></td>
+                            <td>{{ class.semester }}</td>
+                            <td>{{ class.campuses }}</td>
+                            <td>{{ class.price }}</td>
+                            <td>{{ class.start_date|date:"Y-m-d" }}</td>
+                            <td>{{ class.teachers }}</td>
+
+                            <td>
+                                <a href="{% url 'crm:edit_class' class.id %}" class="btn btn-warning btn-sm"><i
+                                        class="fa fa-edit"> 编辑 </i></a>
+                                <a href="" class="btn btn-danger btn-sm"><i class="fa fa-close"> 删除 </i></a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </form>
+
+    </div>
+    {#分页器#}
+    {{ pag | safe }}
+{% endblock %}

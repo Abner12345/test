@@ -1,0 +1,23 @@
+<div class="col-sm-3 col-md-2 sidebar collapse" id="my-menu">
+    <div class="my-menu-item"><a href="{% url 'crm:customer_list' %}">公共客户列表</a></div>
+    <div class="my-menu-item" data-target="#menu-son1" data-toggle="collapse"><a>客户管理</a></div>
+    <ul class="nav nav-sidebar collapse" id="menu-son1">
+        <li><a href="{% url 'crm:my_customer' %}"> &nbsp;我的客户</a>
+        </li>
+        <li><a href="{% url 'crm:customer_record' '0' %}"> &nbsp;客户沟通记录</a></li>
+        <li><a href="{% url 'crm:enrollment_list' '0' %}"> &nbsp;客户报名记录</a></li>
+        <li><a href="{% url 'crm:pay_list' '0' %}"> &nbsp;缴费记录</a></li>
+    </ul>
+    <div class="my-menu-item" href="#menu-son2" data-toggle="collapse"><a>班级管理</a></div>
+    <ul class="nav nav-sidebar collapse" id="menu-son2">
+        <li><a href="{% url 'crm:class_list' %}"> &nbsp;班级列表</a></li>
+        <li><a href=""> &nbsp;上课记录</a></li>
+        <li><a href=""> &nbsp;学生出勤记录</a></li>
+    </ul>
+{#    <div class="my-menu-item" href="#menu-son3" data-toggle="collapse"><a>菜单三</a></div>#}
+{#    <ul class="nav nav-sidebar collapse" id="menu-son3">#}
+{#        <li><a href="">Nav item again</a></li>#}
+{#        <li><a href="">One more nav</a></li>#}
+{#        <li><a href="">Another nav item</a></li>#}
+{#    </ul>#}
+</div>

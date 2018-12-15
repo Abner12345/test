@@ -1,0 +1,53 @@
+/* 自定义左侧菜单栏开始*/
+.my-menu-item {
+  height: 45px;
+  margin-left: -20px;
+  margin-right: -20px;
+  background-color: #222222;
+  border-bottom: 1px solid #27272B;
+}
+.my-menu-item:hover {
+  border-left: 3px solid red;
+  background-color: #27272B;
+  cursor: pointer;
+}
+
+.my-menu-item > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  background-color: transparent;
+  cursor: pointer;
+  color: #eee;
+}
+.my-menu-item > a:hover {
+ text-decoration: none;
+  color: white;
+}
+
+.nav-sidebar {
+  margin-bottom: 0;
+}
+
+#my-menu {
+  background-color: #222222;
+  margin-top: -1px;
+}
+
+#my-menu>ul li {
+  background-color: #333333;
+}
+
+#my-menu>ul li>a {
+  color: white;
+}
+
+#my-menu>ul li>a:hover {
+  background-color: #222222;
+}
+
+#my-menu a {
+  font-size: 16px;
+}
+
+/* 自定义左侧菜单栏结束*/

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block page-css %}
+    {% load static %}
+    <link href="{% static 'customer.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'left_menu/left_menu.css' %}">
+    {% block page-css-II %}
+    {% endblock %}
+{% endblock %}
+
+
+{% block page-main %}
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">客户系统</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="">返回首页</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{{ request.user.name }}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">我的空间</a></li>
+                            <li><a href="#">修改密码</a></li>
+                            <li><a href="#">修改个人信息</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="">注销用户</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar" style="padding: 0;">
+                {% include 'customer/left_menu.html' %}
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                {% block page-content %}
+                {% endblock %}
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block page-js %}
+    {% block page-js-II %}
+    {% endblock %}
+{% endblock %}
